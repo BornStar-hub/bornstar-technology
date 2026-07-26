@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claim Your Free Lead Audit — BornStar Technology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#070b16;
+    --navy-2:#0f1526;
+    --navy-3:#161d33;
+    --line:#232c48;
+    --blue:#3b6ef6;
+    --green:#39e07a;
+    --purple:#8b6cf2;
+    --gold:#d9b25a;
+    --text:#eef1fb;
+    --text-dim:#98a2c3;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(139,108,242,0.16), transparent 60%),
+      radial-gradient(700px 400px at -10% 10%, rgba(57,224,122,0.10), transparent 55%),
+      var(--navy);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.brand{font-family:'Space Grotesk',system-ui,sans-serif;}
+  .wrap{max-width:720px;margin:0 auto;padding:32px 20px 80px;}
+
+  .brandbar{display:flex;align-items:center;gap:10px;margin-bottom:28px;}
+  .brandbar .mark{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;}
+  .brand{font-size:19px;font-weight:600;letter-spacing:0.2px;}
+  .brand span{color:var(--green);}
+
+  header.hero{margin-bottom:30px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(217,178,90,0.35);background:rgba(217,178,90,0.08);padding:6px 12px;border-radius:999px;margin-bottom:16px;}
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+  h1{font-size:32px;line-height:1.15;margin:0 0 14px;font-weight:700;}
+  h1 em{font-style:normal;color:var(--green);}
+  .lede{color:var(--text-dim);font-size:15.5px;line-height:1.6;margin:0 0 18px;}
+  .includes{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0 6px;}
+  .includes div{font-size:13.5px;color:var(--text);display:flex;gap:8px;align-items:flex-start;background:var(--navy-2);border:1px solid var(--line);padding:9px 11px;border-radius:10px;}
+  .includes div::before{content:"✓";color:var(--green);font-weight:700;}
+  .limited{margin-top:18px;font-size:13px;color:var(--text-dim);border-left:2px solid var(--gold);padding-left:12px;}
+  .limited b{color:var(--gold);}
+
+  /* progress — echoes the flyer's 5-step numbered path */
+  .progress{display:flex;align-items:center;margin:34px 0 26px;}
+  .step-node{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;position:relative;}
+  .step-node .circle{width:30px;height:30px;border-radius:50%;background:var(--navy-3);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--text-dim);transition:all .25s;z-index:1;}
+  .step-node.active .circle{background:var(--green);color:#06170d;border-color:var(--green);box-shadow:0 0 0 4px rgba(57,224,122,0.15);}
+  .step-node.done .circle{background:transparent;border-color:var(--green);color:var(--green);}
+  .step-node .label{font-size:10.5px;color:var(--text-dim);text-align:center;max-width:70px;}
+  .step-node.active .label{color:var(--text);}
+  .connector{flex:1;height:1px;background:var(--line);margin-top:-20px;}
+  .connector.done{background:var(--green);}
+
+  form{display:block;}
+  .panel{display:none;background:var(--navy-2);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;animation:fade .3s ease;}
+  .panel.active{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  .panel h2{font-size:19px;margin:0 0 4px;}
+  .panel .sub{color:var(--text-dim);font-size:13px;margin:0 0 20px;}
+
+  .field{margin-bottom:18px;}
+  .field label.q{display:block;font-size:13.5px;font-weight:500;margin-bottom:8px;color:var(--text);}
+  .field label.q .req{color:var(--gold);margin-left:3px;}
+  .field label.q .hint{display:block;font-weight:400;color:var(--text-dim);font-size:12px;margin-top:2px;}
+  input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select{
+    width:100%;background:var(--navy);border:1px solid var(--line);color:var(--text);
+    padding:11px 12px;border-radius:9px;font-size:14.5px;font-family:inherit;
+  }
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,110,246,0.18);}
+  textarea{resize:vertical;min-height:80px;}
+  select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' stroke='%2398a2c3' stroke-width='1.5' fill='none'/></svg>");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;}
+
+  .choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .choice-grid.wide{grid-template-columns:1fr;}
+  .choice{position:relative;}
+  .choice input{position:absolute;opacity:0;}
+  .choice .box{display:flex;align-items:center;gap:9px;border:1px solid var(--line);background:var(--navy);border-radius:9px;padding:10px 12px;font-size:13.5px;cursor:pointer;transition:all .15s;}
+  .choice .box .ind{width:16px;height:16px;flex:0 0 16px;border:1.5px solid var(--text-dim);background:transparent;}
+  .choice input[type=radio] + .box .ind{border-radius:50%;}
+  .choice input[type=checkbox] + .box .ind{border-radius:4px;}
+  .choice input:checked + .box{border-color:var(--green);background:rgba(57,224,122,0.07);}
+  .choice input:checked + .box .ind{background:var(--green);border-color:var(--green);}
+
+  .nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:24px;gap:12px;}
+  button{font-family:inherit;font-size:14.5px;font-weight:600;border-radius:9px;padding:12px 22px;cursor:pointer;border:none;}
+  .btn-primary{background:linear-gradient(135deg,var(--green),#22c55e);color:#06170d;flex:1;}
+  .btn-primary:hover{filter:brightness(1.06);}
+  .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--text-dim);}
+  .btn-ghost:hover{color:var(--text);border-color:var(--text-dim);}
+  .btn-primary:disabled{opacity:0.5;cursor:not-allowed;}
+
+  .consent-row{display:flex;gap:10px;align-items:flex-start;background:var(--navy);border:1px solid var(--line);border-radius:9px;padding:14px;}
+  .consent-row input{margin-top:3px;}
+  .consent-row label{font-size:13.5px;color:var(--text-dim);line-height:1.5;}
+
+  .error-msg{color:#ff6b6b;font-size:12px;margin-top:8px;display:none;}
+
+  /* thank you */
+  #thankyou{display:none;text-align:center;background:var(--navy-2);border:1px solid var(--line);border-radius:var(--radius);padding:44px 26px;}
+  #thankyou .badge{width:56px;height:56px;border-radius:50%;background:rgba(57,224,122,0.12);border:1px solid var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:26px;color:var(--green);}
+  #thankyou h2{font-size:22px;margin:0 0 8px;}
+  #thankyou p{color:var(--text-dim);font-size:14px;line-height:1.6;}
+  #thankyou .includes{text-align:left;margin-top:22px;}
+  .sending{font-size:13px;color:var(--text-dim);text-align:center;margin-top:10px;display:none;}
+
+  footer{margin-top:36px;text-align:center;color:var(--text-dim);font-size:12px;}
+  footer a{color:var(--green);text-decoration:none;}
+
+  @media(max-width:480px){
+    .includes{grid-template-columns:1fr;}
+    .choice-grid{grid-template-columns:1fr;}
+    h1{font-size:26px;}
+    .step-node .label{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brandbar">
+    <div class="mark">B</div>
+    <div class="brand">BornStar <span>Technology</span></div>
+  </div>
+
+  <header class="hero">
+    <div class="eyebrow"><span class="dot"></span> Only 25 free audits available this month</div>
+    <h1>Claim your free <em>10 qualified business leads</em></h1>
+    <p class="lede">Finding new clients takes time. Lead AI researches companies, identifies decision-makers, and prepares qualified business opportunities — so you can spend your time closing deals, not searching for them.</p>
+    <div class="includes">
+      <div>10 qualified companies</div>
+      <div>Company research</div>
+      <div>Key decision-makers</div>
+      <div>Business opportunities</div>
+      <div>Personalized outreach</div>
+      <div>Lead score &amp; priority</div>
+    </div>
+    <div class="limited">Complete the form below and <b>we'll contact you within 2 business days</b>.</div>
+  </header>
+
+  <div class="progress" id="progress"></div>
+
+  <form id="leadForm" novalidate>
+
+    <!-- STEP 1 — Business Information -->
+    <div class="panel active" data-step="1">
+      <h2>Business information</h2>
+      <p class="sub">Tell us about your company.</p>
+
+      <div class="field">
+        <label class="q">Business name <span class="req">*</span></label>
+        <input type="text" name="businessName" required>
+      </div>
+
+      <div class="field">
+        <label class="q">Industry <span class="req">*</span></label>
+        <select name="industry" required>
+          <option value="" disabled selected>Select your industry</option>
+          <option>Manufacturing</option>
+          <option>Construction</option>
+          <option>Engineering</option>
+          <option>Logistics</option>
+          <option>Medical</option>
+          <option>Retail</option>
+          <option>IT</option>
+          <option>Security</option>
+          <option>Professional Services</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label class="q">Website</label>
+        <input type="url" name="website" placeholder="https://">
+      </div>
+
+      <div class="field">
+        <label class="q">Business location</label>
+        <input type="text" name="location" placeholder="City, Province">
+      </div>
+
+      <div class="field">
+        <label class="q">Number of employees <span class="req">*</span></label>
+        <div class="choice-grid" data-radio-group="employees">
+          <label class="choice"><input type="radio" name="employees" value="1–5" required><span class="box"><span class="ind"></span>1–5</span></label>
+          <label class="choice"><input type="radio" name="employees" value="6–20"><span class="box"><span class="ind"></span>6–20</span></label>
+          <label class="choice"><input type="radio" name="employees" value="21–50"><span class="box"><span class="ind"></span>21–50</span></label>
+          <label class="choice"><input type="radio" name="employees" value="51–200"><span class="box"><span class="ind"></span>51–200</span></label>
+          <label class="choice"><input type="radio" name="employees" value="200+"><span class="box"><span class="ind"></span>200+</span></label>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <span></span>
+        <button type="button" class="btn-primary" data-next>Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 — Ideal Client -->
+    <div class="panel" data-step="2">
+      <h2>Your ideal client</h2>
+      <p class="sub">This is what Lead AI uses to find matching companies.</p>
+
+      <div class="field">
+        <label class="q">Describe your ideal customer <span class="req">*</span>
+          <span class="hint">e.g. manufacturers, churches, schools, construction companies</span>
+        </label>
+        <textarea name="idealCustomer" required></textarea>
+      </div>
+
+      <div class="field">
+        <label class="q">Which industries do you want us to target?</label>
+        <div class="choice-grid">
+          <label class="choice"><input type="checkbox" name="targetIndustries" value="Manufacturing"><span class="box"><span class="ind"></span>Manufacturing</span></label>
+          <label class="choice"><input type="checkbox" name="targetIndustries" value="Construction"><span class="box"><span class="ind"></span>Construction</span></label>
+          <label class="choice"><input type="checkbox" name="targetIndustries" value="Engineering"><span class="box"><span class="ind"></span>Engineering</span></label>
+          <label class="choice"><input type="checkbox" name="targetIndustries" value="Logistics"><span class="box"><span class="ind"></span>Logistics</span></label>
+          <label class="choice"><input type="checkbox" name="targetIndustries" value="Medical"><span class="box"><span class="ind"></span>Medical</span></label>
+          <label class="choice"><input type="checkbox" name="targetIndustries" value="Retail"><span class="box"><span class="ind"></span>Retail</span></label>
+          <label class="choice"><input type="checkbox" name="targetIndustries" value="IT"><span class="box"><span class="ind"></span>IT</span></label>
+          <label class="choice"><input type="checkbox" name="targetIndustries" value="Security"><span class="box"><span class="ind"></span>Security</span></label>
+          <label class="choice"><input type="checkbox" name="targetIndustries" value="Professional Services"><span class="box"><span class="ind"></span>Professional Services</span></label>
+          <label class="choice"><input type="checkbox" name="targetIndustries" value="Churches"><span class="box"><span class="ind"></span>Churches</span></label>
+          <label class="choice"><input type="checkbox" name="targetIndustries" value="Schools"><span class="box"><span class="ind"></span>Schools</span></label>
+          <label class="choice"><input type="checkbox" name="targetIndustries" value="Other"><span class="box"><span class="ind"></span>Other</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q">Which cities or provinces should we search?</label>
+        <input type="text" name="searchAreas" placeholder="e.g. Pretoria, Gauteng">
+      </div>
+
+      <div class="field">
+        <label class="q">How many new clients do you want each month? <span class="req">*</span></label>
+        <div class="choice-grid" data-radio-group="clientsPerMonth">
+          <label class="choice"><input type="radio" name="clientsPerMonth" value="5" required><span class="box"><span class="ind"></span>5</span></label>
+          <label class="choice"><input type="radio" name="clientsPerMonth" value="10"><span class="box"><span class="ind"></span>10</span></label>
+          <label class="choice"><input type="radio" name="clientsPerMonth" value="20"><span class="box"><span class="ind"></span>20</span></label>
+          <label class="choice"><input type="radio" name="clientsPerMonth" value="50+"><span class="box"><span class="ind"></span>50+</span></label>
+          <label class="choice"><input type="radio" name="clientsPerMonth" value="As many as possible"><span class="box"><span class="ind"></span>As many as possible</span></label>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button type="button" class="btn-ghost" data-prev>Back</button>
+        <button type="button" class="btn-primary" data-next>Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 — Current Sales Process -->
+    <div class="panel" data-step="3">
+      <h2>Current sales process</h2>
+      <p class="sub">Helps us understand where Lead AI can help most.</p>
+
+      <div class="field">
+        <label class="q">How do you currently get clients?</label>
+        <div class="choice-grid">
+          <label class="choice"><input type="checkbox" name="currentClientSources" value="Referrals"><span class="box"><span class="ind"></span>Referrals</span></label>
+          <label class="choice"><input type="checkbox" name="currentClientSources" value="Facebook"><span class="box"><span class="ind"></span>Facebook</span></label>
+          <label class="choice"><input type="checkbox" name="currentClientSources" value="Google"><span class="box"><span class="ind"></span>Google</span></label>
+          <label class="choice"><input type="checkbox" name="currentClientSources" value="Cold Calling"><span class="box"><span class="ind"></span>Cold Calling</span></label>
+          <label class="choice"><input type="checkbox" name="currentClientSources" value="WhatsApp"><span class="box"><span class="ind"></span>WhatsApp</span></label>
+          <label class="choice"><input type="checkbox" name="currentClientSources" value="Website"><span class="box"><span class="ind"></span>Website</span></label>
+          <label class="choice"><input type="checkbox" name="currentClientSources" value="LinkedIn"><span class="box"><span class="ind"></span>LinkedIn</span></label>
+          <label class="choice"><input type="checkbox" name="currentClientSources" value="Walk-ins"><span class="box"><span class="ind"></span>Walk-ins</span></label>
+          <label class="choice"><input type="checkbox" name="currentClientSources" value="Other"><span class="box"><span class="ind"></span>Other</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q">Biggest challenge? <span class="req">*</span></label>
+        <div class="choice-grid wide" data-radio-group="biggestChallenge">
+          <label class="choice"><input type="radio" name="biggestChallenge" value="Finding leads" required><span class="box"><span class="ind"></span>Finding leads</span></label>
+          <label class="choice"><input type="radio" name="biggestChallenge" value="Finding decision-makers"><span class="box"><span class="ind"></span>Finding decision-makers</span></label>
+          <label class="choice"><input type="radio" name="biggestChallenge" value="Booking meetings"><span class="box"><span class="ind"></span>Booking meetings</span></label>
+          <label class="choice"><input type="radio" name="biggestChallenge" value="Closing deals"><span class="box"><span class="ind"></span>Closing deals</span></label>
+          <label class="choice"><input type="radio" name="biggestChallenge" value="Following up"><span class="box"><span class="ind"></span>Following up</span></label>
+          <label class="choice"><input type="radio" name="biggestChallenge" value="No marketing strategy"><span class="box"><span class="ind"></span>No marketing strategy</span></label>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button type="button" class="btn-ghost" data-prev>Back</button>
+        <button type="button" class="btn-primary" data-next>Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 4 — Contact Details -->
+    <div class="panel" data-step="4">
+      <h2>Contact details</h2>
+      <p class="sub">So we can send you the audit.</p>
+
+      <div class="field">
+        <label class="q">Full name <span class="req">*</span></label>
+        <input type="text" name="fullName" required>
+      </div>
+
+      <div class="field">
+        <label class="q">Position</label>
+        <input type="text" name="position">
+      </div>
+
+      <div class="field">
+        <label class="q">Email <span class="req">*</span></label>
+        <input type="email" name="email" required>
+      </div>
+
+      <div class="field">
+        <label class="q">WhatsApp number <span class="req">*</span></label>
+        <input type="tel" name="whatsapp" placeholder="e.g. 078 175 9560" required>
+      </div>
+
+      <div class="field">
+        <label class="q">Preferred contact method <span class="req">*</span></label>
+        <div class="choice-grid" data-radio-group="contactMethod">
+          <label class="choice"><input type="radio" name="contactMethod" value="WhatsApp" required><span class="box"><span class="ind"></span>WhatsApp</span></label>
+          <label class="choice"><input type="radio" name="contactMethod" value="Phone"><span class="box"><span class="ind"></span>Phone</span></label>
+          <label class="choice"><input type="radio" name="contactMethod" value="Email"><span class="box"><span class="ind"></span>Email</span></label>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button type="button" class="btn-ghost" data-prev>Back</button>
+        <button type="button" class="btn-primary" data-next>Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 5 — Consent -->
+    <div class="panel" data-step="5">
+      <h2>Almost done</h2>
+      <p class="sub">One last thing before we submit your application.</p>
+
+      <div class="consent-row">
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent">I agree that BornStar Technology may contact me regarding my Lead Audit.</label>
+      </div>
+      <div class="error-msg" id="errorMsg">Please check all required fields before submitting.</div>
+
+      <div class="nav-row">
+        <button type="button" class="btn-ghost" data-prev>Back</button>
+        <button type="submit" class="btn-primary" id="submitBtn">Submit application</button>
+      </div>
+      <div class="sending" id="sendingMsg">Sending your application…</div>
+    </div>
+
+  </form>
+
+  <div id="thankyou">
+    <div class="badge">✓</div>
+    <h2>Congratulations!</h2>
+    <p>Your application has been received. If selected, you'll receive:</p>
+    <div class="includes">
+      <div>10 Qualified Business Leads</div>
+      <div>Company Research</div>
+      <div>Decision-Maker Insights</div>
+      <div>Business Opportunity Analysis</div>
+      <div>Personalized Outreach Suggestions</div>
+    </div>
+    <p style="margin-top:18px;">We'll contact you within 2 business days.</p>
+  </div>
+
+  <footer>BornStar Technology · WhatsApp / Call <a href="tel:0781759560">078 175 9560</a></footer>
+</div>
+
+<script>
+  // ⚠️ Replace with your deployed Google Apps Script Web App URL (see setup notes provided separately).
+  const SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+  const steps = Array.from(document.querySelectorAll('.panel'));
+  const progressEl = document.getElementById('progress');
+  const stepLabels = ["Business", "Ideal Client", "Sales Process", "Contact", "Consent"];
+  let current = 1;
+
+  function renderProgress(){
+    progressEl.innerHTML = '';
+    steps.forEach((_, i) => {
+      const n = i + 1;
+      const node = document.createElement('div');
+      node.className = 'step-node' + (n === current ? ' active' : n < current ? ' done' : '');
+      node.innerHTML = `<div class="circle">${n < current ? '✓' : n}</div><div class="label">${stepLabels[i]}</div>`;
+      progressEl.appendChild(node);
+      if (n < steps.length) {
+        const conn = document.createElement('div');
+        conn.className = 'connector' + (n < current ? ' done' : '');
+        progressEl.appendChild(conn);
+      }
+    });
+  }
+
+  function showStep(n){
+    steps.forEach(p => p.classList.toggle('active', Number(p.dataset.step) === n));
+    current = n;
+    renderProgress();
+    window.scrollTo({top: document.querySelector('.progress').offsetTop - 20, behavior:'smooth'});
+  }
+
+  function validateStep(panel){
+    const requiredEls = panel.querySelectorAll('[required]');
+    for (const el of requiredEls) {
+      if (el.type === 'radio') {
+        const group = panel.querySelectorAll(`input[name="${el.name}"]`);
+        if (![...group].some(r => r.checked)) return false;
+      } else if (el.type === 'checkbox') {
+        if (!el.checked) return false;
+      } else if (!el.value.trim()) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  document.querySelectorAll('[data-next]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const panel = btn.closest('.panel');
+      if (!validateStep(panel)) {
+        panel.style.animation = 'none';
+        panel.offsetHeight;
+        panel.style.animation = 'fade .3s ease';
+        const err = panel.querySelector('.error-msg');
+        panel.querySelectorAll('[required]').forEach(el=>{});
+        alert('Please fill in all required fields before continuing.');
+        return;
+      }
+      showStep(current + 1);
+    });
+  });
+
+  document.querySelectorAll('[data-prev]').forEach(btn => {
+    btn.addEventListener('click', () => showStep(current - 1));
+  });
+
+  renderProgress();
+
+  document.getElementById('leadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const finalPanel = steps[steps.length - 1];
+    if (!validateStep(finalPanel)) {
+      document.getElementById('errorMsg').style.display = 'block';
+      return;
+    }
+    document.getElementById('errorMsg').style.display = 'none';
+
+    const form = e.target;
+    const fd = new FormData(form);
+    const data = {};
+    for (const [key, value] of fd.entries()) {
+      if (data[key] !== undefined) {
+        data[key] = Array.isArray(data[key]) ? [...data[key], value] : [data[key], value];
+      } else {
+        data[key] = value;
+      }
+    }
+    // normalize checkbox groups to comma-separated strings
+    ['targetIndustries','currentClientSources'].forEach(k => {
+      if (Array.isArray(data[k])) data[k] = data[k].join(', ');
+    });
+    data.consent = form.consent.checked ? 'Yes' : 'No';
+    data.submittedAt = new Date().toISOString();
+
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    document.getElementById('sendingMsg').style.display = 'block';
+
+    try {
+      if (SCRIPT_URL && !SCRIPT_URL.includes('PASTE_YOUR')) {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(data)
+        });
+      } else {
+        console.warn('SCRIPT_URL not configured — form data was not sent anywhere.', data);
+      }
+      document.getElementById('leadForm').style.display = 'none';
+      document.querySelector('.progress').style.display = 'none';
+      document.getElementById('thankyou').style.display = 'block';
+      window.scrollTo({top:0, behavior:'smooth'});
+    } catch (err) {
+      document.getElementById('sendingMsg').style.display = 'none';
+      submitBtn.disabled = false;
+      alert('Something went wrong sending your application. Please try again.');
+      console.error(err);
+    }
+  });
+</script>
+</body>
+</html>
